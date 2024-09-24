@@ -1,0 +1,64 @@
+{
+  "name": "redi-vue-binding",
+  "type": "module",
+  "version": "0.0.1-beta.16",
+  "packageManager": "pnpm@8.15.8",
+  "description": "a simple monaco editor component for vue3",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "zwkang",
+    "email": "kang95630@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zwkang/vue-monaco-next"
+  },
+  "bugs": "https://github.com/zwkang/vue-monaco-next/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "build": "vite build",
+    "start": "tsx src/index.ts",
+    "release": "npm publish",
+    "bump:version": "bumpp",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "update:deps": "taze major -lr"
+  },
+  "peerDependencies": {
+    "@vueuse/core": ">=9.0.0",
+    "@wendellhu/redi": "^0.15.4",
+    "monaco-editor": ">=0.39.0",
+    "vue": ">=3.3.0"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.5",
+    "@wendellhu/redi": "^0.15.4",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.16.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "bumpp": "^9.4.1",
+    "eslint": "^9.1.1",
+    "taze": "^0.13.7",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "vite-plugin-dts": "^3.9.0",
+    "vitest": "^1.5.3"
+  }
+}
