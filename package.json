@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.15.8",
-  "description": "a simple monaco editor component for vue3",
+  "description": "a simple redi vue adaptor",
   "publishConfig": {
     "access": "public"
   },
@@ -14,9 +14,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zwkang/vue-monaco-next"
+    "url": "https://github.com/zwkang-dev/redi-vue-bindings"
   },
-  "bugs": "https://github.com/zwkang/vue-monaco-next/issues",
+  "bugs": "https://github.com/zwkang-dev/redi-vue-bindings/issues",
   "keywords": [],
   "sideEffects": false,
   "main": "./dist/index.js",
