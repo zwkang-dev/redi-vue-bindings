@@ -1,7 +1,7 @@
 {
   "name": "redi-vue-binding",
   "type": "module",
-  "version": "0.0.1-beta.16",
+  "version": "0.0.0",
   "packageManager": "pnpm@8.15.8",
   "description": "a simple monaco editor component for vue3",
   "publishConfig": {
