@@ -1,5 +1,5 @@
 {
-  "name": "redi-vue-binding",
+  "name": "@zwkang/redi-vue-binding",
   "type": "module",
   "version": "0.0.1-beta.1",
   "packageManager": "pnpm@8.15.8",
