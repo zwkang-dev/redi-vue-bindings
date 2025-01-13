@@ -58,9 +58,7 @@ export const connectDependencies = defineComponent({
     provideRediInjector(props.dependencies)
     return () => {
       return (
-        <>
-          {slots.default?.()}
-        </>
+        slots.default?.()
       )
     }
   },
