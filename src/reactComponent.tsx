@@ -1,12 +1,13 @@
-import { type Dependency, Injector } from '@wendellhu/redi'
+import type { Dependency } from '@wendellhu/redi'
 
 import type { PropType } from 'vue'
-import { defineComponent, inject, provide, shallowRef } from 'vue'
 import { tryOnScopeDispose } from '@vueuse/core'
+import { Injector } from '@wendellhu/redi'
+import { defineComponent, inject, provide, shallowRef } from 'vue'
 import { RediContext } from './reactContext'
 
 export function provideRediInjector(dependencies: Dependency[]) {
-  const childInjectorRef = shallowRef<Injector >()
+  const childInjectorRef = shallowRef<Injector>()
   tryOnScopeDispose(() => childInjectorRef.value?.dispose())
   const context = inject(RediContext)!
   if (!context || !context.injector) {
