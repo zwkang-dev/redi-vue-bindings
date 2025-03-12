@@ -1,6 +1,6 @@
 // import * as React from 'react'
-import type { Ref } from 'vue'
-import { inject, unref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import { computed, inject, unref } from 'vue'
 import type {
   DependencyIdentifier,
   Injector,
@@ -31,37 +31,37 @@ export function useInjector(): Injector {
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   lookUp?: MaybeRef<LookUp>
-): T
+): ComputedRef<T>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantity: MaybeRef<Quantity.MANY>,
   lookUp?: MaybeRef<LookUp>
-): T[]
+): ComputedRef<T[]>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantity: MaybeRef<Quantity.OPTIONAL>,
   lookUp?: MaybeRef<LookUp>
-): T | null
+): ComputedRef<T | null>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantity: MaybeRef<Quantity.REQUIRED>,
   lookUp?: MaybeRef<LookUp>
-): T
+): ComputedRef<T>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantity: MaybeRef<Quantity>,
   lookUp?: MaybeRef<LookUp>
-): T | T[] | null
+): ComputedRef<T | T[] | null>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantity?: MaybeRef<Quantity>,
   lookUp?: MaybeRef<LookUp>
-): T | T[] | null
+): ComputedRef<T | T[] | null>
 export function useDependency<T>(
   id: MaybeRef<DependencyIdentifier<T>>,
   quantityOrLookUp?: MaybeRef<Quantity | LookUp>,
   lookUp?: MaybeRef<LookUp>,
-): T | T[] | null {
+): ComputedRef<T | T[] | null> {
   const injector = useInjector()
-  return injector.get<T>(unref(id), unref(quantityOrLookUp), unref(lookUp))
+  return computed(() => injector.get<T>(unref(id), unref(quantityOrLookUp), unref(lookUp)))
 }

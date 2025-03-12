@@ -8,7 +8,7 @@ import { RediContext } from './reactContext'
 export function provideRediInjector(dependencies: Dependency[]) {
   const childInjectorRef = shallowRef<Injector >()
   tryOnScopeDispose(() => childInjectorRef.value?.dispose())
-  const context = inject(RediContext)
+  const context = inject(RediContext)!
   if (!context || !context.injector) {
     childInjectorRef.value = new Injector(dependencies)
     provide(RediContext, {
@@ -34,10 +34,6 @@ export const connectInjector = defineComponent({
     },
   },
   setup(props, { slots }) {
-    // const { injector } = toRefs(props)
-    // const injectorValue = computed(() => ({
-    //   injector: injector.value,
-    // }))
     provide(RediContext, props)
     return () => {
       return (
