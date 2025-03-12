@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import { defineEmits, defineProps, inject, toRefs } from 'vue'
-import { LookUp, Quantity } from '@wendellhu/redi'
-import type { RediContext } from '../../'
-import { useDependency, useInjector } from '../../'
+import { defineProps } from 'vue'
+import { useInjector } from '../../'
 import { A, B } from './modules'
 
 const props = defineProps<IProps>()
@@ -17,7 +15,7 @@ interface IProps {
 // const context = inject<RediContext>('rediContext')!
 const context = useInjector()!
 // console.log(injector.value.get(B))
-const { inc, dec, count } = context.value.injector.get(B)
+const { inc, dec, count } = context.get(B)
 // const { } = toRefs(props)
 // const BModule = injector.get(B)
 // console.log(BModule)
