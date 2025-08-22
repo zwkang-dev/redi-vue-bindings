@@ -7,7 +7,7 @@ import type {
 import { RediError } from '@wendellhu/redi'
 import { inject } from 'vue'
 
-import { RediContext } from './reactContext'
+import { RediContext } from './context'
 
 class HooksNotInRediContextError extends RediError {
   constructor() {
