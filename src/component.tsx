@@ -1,24 +1,24 @@
 import type { Dependency } from '@wendellhu/redi'
 
 import type { PropType } from 'vue'
-import { tryOnScopeDispose } from '@vueuse/core'
+import { injectLocal, provideLocal, tryOnScopeDispose } from '@vueuse/core'
 import { Injector } from '@wendellhu/redi'
-import { defineComponent, inject, provide, shallowRef } from 'vue'
+import { defineComponent, shallowRef } from 'vue'
 import { RediContext } from './context'
 
 export function provideRediInjector(dependencies: Dependency[]) {
   const childInjectorRef = shallowRef<Injector>()
   tryOnScopeDispose(() => childInjectorRef.value?.dispose())
-  const context = inject(RediContext)!
+  const context = injectLocal(RediContext)
   if (!context || !context.injector) {
     childInjectorRef.value = new Injector(dependencies)
-    provide(RediContext, {
+    provideLocal(RediContext, {
       injector: childInjectorRef.value,
     })
   }
   else {
     childInjectorRef.value = context.injector.createChild(dependencies)
-    provide(RediContext, {
+    provideLocal(RediContext, {
       injector: childInjectorRef.value,
     })
   }
@@ -35,7 +35,7 @@ export const connectInjector = defineComponent({
     },
   },
   setup(props, { slots }) {
-    provide(RediContext, props)
+    provideLocal(RediContext, props)
     return () => {
       return (
         slots.default?.()

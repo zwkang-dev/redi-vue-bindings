@@ -3,7 +3,10 @@
     "allow": [
       "mcp__codex__codex",
       "Bash(pnpm add:*)",
-      "Bash(pnpm test)"
+      "Bash(pnpm test)",
+      "WebSearch",
+      "WebFetch(domain:vueuse.org)",
+      "Bash(pnpm typecheck)"
     ]
   }
 }

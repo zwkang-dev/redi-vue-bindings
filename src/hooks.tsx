@@ -5,7 +5,7 @@ import type {
   Quantity,
 } from '@wendellhu/redi'
 import { RediError } from '@wendellhu/redi'
-import { inject } from 'vue'
+import { injectLocal } from '@vueuse/core'
 
 import { RediContext } from './context'
 
@@ -16,10 +16,10 @@ class HooksNotInRediContextError extends RediError {
 }
 
 export function useInjector(): Injector {
-  const injectionContext = inject(RediContext)!
-  if (!injectionContext.injector)
+  const injectionContext = injectLocal(RediContext)
+  if (!injectionContext || !injectionContext.injector)
     throw new HooksNotInRediContextError()
-  return injectionContext.injector!
+  return injectionContext.injector
 }
 
 export function useDependency<T>(

@@ -198,6 +198,66 @@ const all = useDependency(MyService, Quantity.MANY)
 
 ---
 
+## ❓ 常见问题
+
+<details>
+<summary><b>使用 createHookDependency 时类型推断为 any</b></summary>
+
+### 问题描述
+
+当你的项目使用 `moduleResolution: "node"` 时，`createHookDependency` 返回的类型可能会被推断为 `any`：
+
+```typescript
+// ❌ useGlobalEnv 类型为 any
+export const useGlobalEnv = createHookDependency(useGlobalEnvLocal);
+```
+
+### 原因
+
+`moduleResolution: "node"` 是为 CommonJS 时代设计的旧解析算法，对现代 ESM 包的类型解析支持有限。当 TypeScript 解析跨包的泛型类型时（`redi-vue-binding` → `@wendellhu/redi` 的 `IdentifierDecorator<T>`），类型链容易断裂，导致泛型 `T` 丢失并退化为 `any`。
+
+### 解决方案
+
+**方案一：升级 moduleResolution（推荐）**
+
+在 `tsconfig.json` 中将 `moduleResolution` 改为 `bundler`：
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler"
+  }
+}
+```
+
+**方案二：添加 paths 映射**
+
+如果无法修改 `moduleResolution`，可以在 `tsconfig.json` 中添加 paths 映射，直接指向源码：
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@zwkang-dev/redi-vue-binding": ["/path/to/redi-vue-binding/src/index.ts"],
+      "@wendellhu/redi": ["./node_modules/@wendellhu/redi/dist/esm/index.d.ts"]
+    }
+  }
+}
+```
+
+### moduleResolution 对比
+
+| 特性 | `"node"` | `"bundler"` |
+|------|----------|-------------|
+| 适用场景 | Node.js / CommonJS | Vite / Webpack / ESM |
+| `exports` 字段支持 | 有限 | 完整 |
+| ESM 类型追踪 | 容易断链 | 正常 |
+| 泛型跨包传递 | 易丢失 | 正常 |
+
+</details>
+
+---
+
 ## 📄 License
 
 [MIT](./LICENSE) License © 2022-present [zwkang](https://github.com/zwkang)
