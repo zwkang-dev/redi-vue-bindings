@@ -31,11 +31,17 @@
     "test": "vitest run",
     "build": "tsup",
     "start": "tsx src/index.ts",
-    "release": "npm publish",
-    "bump:version": "bumpp",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build",
-    "update:deps": "taze major -lr"
+    "update:deps": "taze major -lr",
+    "changelog": "npx changelogithub --dry",
+    "changelog:generate": "npx changelogithub",
+    "release": "npm publish",
+    "release:beta": "bumpp --preid beta --tag beta && npm publish --tag beta",
+    "release:major": "bumpp major && npm publish",
+    "release:minor": "bumpp minor && npm publish",
+    "release:patch": "bumpp patch && npm publish",
+    "bump:version": "bumpp"
   },
   "peerDependencies": {
     "@vueuse/core": ">=9.0.0",
