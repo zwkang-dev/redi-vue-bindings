@@ -94,7 +94,9 @@ const userService = useDependency(UserService)
 <template>
   <div>
     <p>当前用户: {{ userService.user }}</p>
-    <button @click="userService.login('张三')">登录</button>
+    <button @click="userService.login('张三')">
+      登录
+    </button>
   </div>
 </template>
 ```
@@ -130,9 +132,9 @@ const userService = useDependency(UserService)
 除了类，你还可以使用 **Vue Composition API** 风格组织代码：
 
 ```typescript
-// counter.hook.ts
-import { ref, computed } from 'vue'
 import { createHookDependency } from '@zwkang-dev/redi-vue-binding'
+// counter.hook.ts
+import { computed, ref } from 'vue'
 
 function useCounter(initialValue = 0) {
   const count = ref(initialValue)
