@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@vueuse/core": "^13.7.0",
-    "@wendellhu/redi": "^1.0.0",
+    "@wendellhu/redi": "1.0.0",
     "monaco-editor": "^0.52.2",
     "tdesign-vue-next": "^1.15.5",
     "vite-plugin-monaco-editor": "^1.1.0",
     "vue": "^3.5.19"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
     "@vitejs/plugin-vue": "^6.0.1",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

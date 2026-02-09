@@ -54,9 +54,12 @@ export class UserAuthModule {
   }
 
   public async handleConfirm() {
-    return await this.confirmDialog.confirm(
+    const res = await this.confirmDialog.confirm(
       this.store.value,
     )
+
+    // alert(res.)
+    console.log(res)
   }
 
   public async handleCancel() {

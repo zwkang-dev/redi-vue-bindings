@@ -1,13 +1,9 @@
 <script lang="ts" setup>
-import { defineEmits, defineProps, toRefs } from 'vue'
-import { Dialog, Form, FormItem, Input, Select, SelectOption } from 'tdesign-vue-next'
-import { useDependency, useInjector } from '../../../../dist'
+import { useDependency } from '@zwkang-dev/redi-vue-binding'
+import { Dialog, Form, FormItem, Input } from 'tdesign-vue-next'
 import { UserAuthModule } from './user-auth-module'
 
-const injector = useInjector()!
-const { visible, store, handleCancel, handleConfirm } = injector.get(UserAuthModule)
-const userAuthModule = useDependency(UserAuthModule)
-// userAuthModule.value.openDialog
+const { visible, store, handleCancel, handleConfirm } = useDependency(UserAuthModule)
 </script>
 
 <template>

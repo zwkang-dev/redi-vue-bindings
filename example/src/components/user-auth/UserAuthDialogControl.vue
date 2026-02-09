@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { defineEmits, defineProps, toRefs } from 'vue'
+import { useInjector } from '@zwkang-dev/redi-vue-binding'
 import { Button } from 'tdesign-vue-next'
-import { useInjector } from '../../../../dist'
 import { UserAuthModule } from './user-auth-module'
 
 interface IProps {

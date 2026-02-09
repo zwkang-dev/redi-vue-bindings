@@ -39,14 +39,11 @@
   },
   "peerDependencies": {
     "@vueuse/core": ">=9.0.0",
-    "@wendellhu/redi": "^0.15.4",
-    "monaco-editor": ">=0.39.0",
+    "@wendellhu/redi": "^1.0.0",
     "vue": ">=3.3.0"
   },
   "dependencies": {
-    "@types/node": "^22.17.2",
-    "@wendellhu/redi": "^1.0.0",
-    "rxjs": "^7.8.2"
+    "@types/node": "^22.17.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",

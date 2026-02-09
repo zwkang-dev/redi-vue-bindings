@@ -1,18 +1,22 @@
 <script setup lang="ts">
+import { Injector } from '@wendellhu/redi'
+
+import { connectInjector } from '@zwkang-dev/redi-vue-binding'
 import { ref } from 'vue'
 
-import { Injector } from '@wendellhu/redi'
-import { connectInjector } from '../../'
-
-import { A, B } from './modules'
-
-import ACom from './ACom.vue'
+import { CounterHook } from './components/counter-hook/counter.hook'
+import CounterDemo from './components/counter-hook/CounterDemo.vue'
+import { UserAuthModule } from './components/user-auth/user-auth-module'
 import UserAuthDialog from './components/user-auth/UserAuthDialog.vue'
 import UserAuthDialogControl from './components/user-auth/UserAuthDialogControl.vue'
-import { UserAuthModule } from './components/user-auth/user-auth-module'
 
-const injector = new Injector([[UserAuthModule]])
-// console.log(injector)
+const injector = new Injector([
+  // 类形式（原有）
+  [UserAuthModule],
+  // useFactory 形式（简化版）—— 使用 createHookDependency
+  CounterHook.asDependency(),
+])
+
 const inputValue = ref('')
 </script>
 
@@ -20,7 +24,9 @@ const inputValue = ref('')
   <div class=" w-full h-screen flex flex-row">
     <div class="w-[300px] h-full" />
     <connectInjector :injector="injector">
-      <!-- <ACom /> -->
+      <!-- useFactory Hook 示例 -->
+      <CounterDemo />
+      <!-- 类形式示例 -->
       <UserAuthDialog />
       <UserAuthDialogControl username="wenkangzhou" />
     </connectInjector>

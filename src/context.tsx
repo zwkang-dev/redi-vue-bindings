@@ -13,7 +13,7 @@ if (!globalObject[__REDI_CONTEXT_LOCK__]) {
   globalObject[__REDI_CONTEXT_LOCK__] = true
 }
 else if (!isNode) {
-  console.error('[redi]: "RediContext" is already created. You may import "RediContext" from different paths. Use "import { RediContext } from \'@wendellhu/redi/react-bindings\'; instead."')
+  console.error('[redi]: "RediContext" is already created. You may import "RediContext" from different paths. Use "import { RediContext } from \'@zwkang-dev/redi-vue-binding\'; instead."')
 }
 
 export interface IRediContext {

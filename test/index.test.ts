@@ -1,6 +1,10 @@
 import { assert, it } from 'vitest'
-import { name } from '../src'
+import { connectDependencies, connectInjector, RediContext, useDependency, useInjector } from '../src'
 
-it('simple', () => {
-  assert.equal(name, 'pkg-name')
+it('should export all public APIs', () => {
+  assert.ok(connectDependencies)
+  assert.ok(connectInjector)
+  assert.ok(RediContext)
+  assert.ok(useDependency)
+  assert.ok(useInjector)
 })
