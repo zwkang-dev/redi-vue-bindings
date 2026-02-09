@@ -1,7 +1,7 @@
 {
   "name": "@zwkang-dev/redi-vue-binding",
   "type": "module",
-  "version": "0.0.1-beta.14",
+  "version": "0.0.1-beta.15",
   "packageManager": "pnpm@10.29.2",
   "description": "a simple redi vue adaptor",
   "publishConfig": {
