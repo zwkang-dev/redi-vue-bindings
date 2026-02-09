@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.2.0",
-    "@wendellhu/redi": "1.1.1",
     "monaco-editor": "^0.55.1",
     "tdesign-vue-next": "^1.18.2",
     "vite-plugin-monaco-editor": "^1.1.0",
