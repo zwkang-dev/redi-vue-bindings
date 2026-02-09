@@ -70,7 +70,9 @@ export function defineHookDependency<T, Args extends any[] = []>(
 export function createHookDependency<T, Args extends any[] = []>(
   hook: HookFunction<T, Args>,
   ...defaultArgs: Args extends [] ? [] : Args
-) {
+): IdentifierDecorator<T> & {
+  asDependency: (...args: Args | []) => Dependency<T>
+} {
   const name = hook.name || 'AnonymousHook'
   const identifier = createIdentifier<T>(name)
 
